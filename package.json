@@ -1,0 +1,23 @@
+{
+  "name": "protocoin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test",
+    "start": "npx hardhat node",
+    "compile": "npx hardhat compile",
+    "deploy:local": "npx hardhat ignition deploy ignition/modules/ArcaneCoin.ts --network local",
+    "deploy:prod": "npx hardhat ignition deploy ignition/modules/ArcaneCoin.ts --network sepolia"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.5"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2"
+  }
+}
