@@ -17,11 +17,12 @@ contract ProtoCoin is ERC20 {
         _mint(msg.sender, 1000000 * 10 ** decimals());
     }
 
-    function mint() public {
-        require(_mintAmount > 0, "Mint is not enabled");
-        require(block.timestamp >= _mintDelay, "Mint is not available yet");
-        _mint(msg.sender, _mintAmount);
-        nextMint[msg.sender] = block.timestamp + _mintDelay;
+    function mint(address to) public restricted {
+        require(_mintAmount > 0, "Mint amount is not enable");
+        require(block.timestamp >= nextMint[to], "Mint is not allowed yet");
+        _mint(to, _mintAmount);
+
+        nextMint[to] = uint64(block.timestamp + _mintDelay);
     }
 
     function setMintAmount(uint256 amount) public restricted {

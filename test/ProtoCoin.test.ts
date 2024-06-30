@@ -24,7 +24,35 @@ describe("ProtoCoin", function () {
       expect(await owner.getAddress()).to.equal(await owner.getAddress());
     });
 
+    it("Should set the right name", async function () {
+      const { protoCoin } = await deployFixture();
+      expect(await protoCoin.name()).to.equal("ProtoCoin");
 
+    });
+
+    it("Should set the right symbol", async function () {
+      const { protoCoin } = await deployFixture();
+      expect(await protoCoin.symbol()).to.equal("PROTO");
+
+    });
+
+    it("Should set the right decimals", async function () {
+      const { protoCoin } = await deployFixture();
+      expect(await protoCoin.decimals()).to.equal(18);
+
+    });
+
+    it("Should set the right total supply", async function () {
+      const { protoCoin } = await deployFixture();
+      expect(await protoCoin.totalSupply()).to.equal(1000000);
+
+    });
+
+    it("Should mint the total supply to the owner", async function () {
+      const { protoCoin, owner } = await deployFixture();
+      expect(await protoCoin.balanceOf(await owner.getAddress())).to.equal(1000000);
+
+    });
 
     });
 });
